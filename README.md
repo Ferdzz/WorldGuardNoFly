@@ -25,6 +25,12 @@ Reload, and then to verify if the region was correctly added, just use the follo
 ```
 /worldguardnofly regions
 ```
+If you want to allow a certain player to bypass the no-fly zone (let him fly inside a restricted region), give the player the following permission:
+```
+worldguardnofly.bypass
+```
 
 ### Important notice
+Please note that this plugin will not stop people from toggling creative mode, or using /fly. To disable the /fly command, just add "/fly" to the disabled-cmds flag in WorldGuard. This plugin will only disallow people from toggling flight inside a restricted region.
+
 There are a few upgrades I plan to do to this plugin, including better performance and a command to add and remove regions in-game. Please keep updated either on this repository, or on the proper Bukkit or Spigot post.
