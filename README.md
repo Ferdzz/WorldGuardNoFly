@@ -1,9 +1,7 @@
 # WorldGuardNoFly
 Simple plugin that allows admins to disable flying in certain zones
 
-## WorldGuardNoFly
-
-Simple plugin that allows admins to disable flying in certain zones. 
+---
 
 While working on a upcoming Prison server, we noticed there was a lack of proper fly disablers compatible with WorldGuard. I therefore coded this small plugin to allow us to do so, and decided to release it to anyone who might need it.
 
