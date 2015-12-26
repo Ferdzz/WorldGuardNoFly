@@ -12,20 +12,40 @@ This plugin requires the following plugins to work:
 ## How to use
 WorldGuardNoFly is easy to use, in the config, you just need to add a few lines.
 ```yaml
-worlds: 
-  world: # this is the name of the world
-  - overworldpvp # this is the name of the WorldGuard region
-  - memberarea
-  nether:
-  - netherpvp
+# this is the message that will show when the player tries to toggle fly in a WorldGuardNoFlyZone
+# you can also use the following placeholders:
+# - %player% is replaced by the player name
+# - %region% is replaced by the region name
+# - %world% is replaced by the world name
+toggledMessage: "&cYou are not allowed to fly here!"
+# true if the message above should be shown
+toggledMessageEnabled: true
+
+# List of worlds and WorldGuard regions to disable flight in
+# Format: 
+# 
+# worlds:
+#   world1:
+#   - spawn
+#   - region2
+#   world2:
+#   - region1
+#   - pvp
+#
+# etc...
+worlds:
+  world:
+  - spawn
 ```
 Reload, and then to verify if the region was correctly added, just use the following command:
 ```
 /worldguardnofly regions
 ```
-If you want to allow a certain player to bypass the no-fly zone (let him fly inside a restricted region), give the player the following permission:
+## Permissions 
+
 ```
-worldguardnofly.bypass
+worldguardnofly.bypass   If you want to allow a certain player to bypass the no-fly zone (let him fly inside a restricted region)
+worldguardnofly.command   If you want to allow a certain player to use /worldguardnofly regions
 ```
 
 ### Important notice
