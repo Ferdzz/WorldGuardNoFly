@@ -1,0 +1,24 @@
+# this is the message that will show when the player tries to toggle fly in a WorldGuardNoFlyZone
+# you can also use the following placeholders:
+# - %player% is replaced by the player name
+# - %region% is replaced by the region name
+# - %world% is replaced by the world name
+toggledMessage: "&cYou are not allowed to fly here!"
+# true if the message above should be shown
+toggledMessageEnabled: true
+
+# List of worlds and WorldGuard regions to disable flight in
+# Format: 
+# 
+# worlds:
+#   world1:
+#   - spawn
+#   - region2
+#   world2:
+#   - region1
+#   - pvp
+#
+# etc...
+worlds:
+  world:
+  - spawn

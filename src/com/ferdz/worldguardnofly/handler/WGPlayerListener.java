@@ -1,5 +1,8 @@
 package com.ferdz.worldguardnofly.handler;
 
+import java.util.ArrayList;
+
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -7,26 +10,25 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import com.ferdz.worldguardnofly.ConfigWorldRegion;
 import com.ferdz.worldguardnofly.WorldGuardNoFly;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class WGPlayerListener implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void playerMove(PlayerMoveEvent e) {
 		Player p = e.getPlayer();
-		if(p.hasPermission("worldguardnofly.bypass"))
+		if (p.hasPermission("worldguardnofly.bypass"))
 			return;
-		
+
 		if (p.isFlying()) {
-			for (ConfigWorldRegion cworld : WorldGuardNoFly.map) {
-				if (p.getWorld().getName().equals(cworld.world.getName())) {
-					for (ProtectedRegion region : cworld.regions) {
-						Location l = p.getLocation();
-						if (region.contains(l.getBlockX(), l.getBlockY(), l.getBlockZ())) {
-							p.setFlying(false);
-						}
+			for (int i = 0; i < WorldGuardNoFly.map.size(); i++) {
+				ArrayList<String> regions = WorldGuardNoFly.map.get(p.getWorld().getName());
+				Location l = p.getLocation();
+				for (String protectedRegion : regions) {
+					if (WorldGuardNoFly.worldGuard.getRegionManager(p.getWorld()).getRegion(protectedRegion).contains(l.getBlockX(), l.getBlockY(), l.getBlockZ())) {
+						p.setFlying(false);
+						if (WorldGuardNoFly.TOGGLED_MESSAGE != "")
+							p.sendMessage(ChatColor.translateAlternateColorCodes('&', WorldGuardNoFly.TOGGLED_MESSAGE.replace("%player%", p.getDisplayName()).replace("%world%", p.getWorld().getName()).replace("%region%", protectedRegion)));
 					}
 				}
 			}
