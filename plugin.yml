@@ -1,6 +1,6 @@
 main: com.ferdz.worldguardnofly.WorldGuardNoFly
 name: WorldGuardNoFly
-version: 1.0
+version: 1.1
 author: Ferdz
 description: Allows disabling flight when entering a WorldGuard zone
 depend: [WorldGuard, WorldEdit]
